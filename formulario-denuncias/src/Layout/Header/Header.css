@@ -1,0 +1,41 @@
+.header-custom {
+    height: 160px;
+    background-color: #fff;
+    border-bottom: 7px solid #fa7901;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-custom .left-column {
+    width: 200px;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .header-custom .left-column .imagen {
+    height: 140px;
+    width: 200px;
+  }
+  
+  .header-custom .center-column {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .header-custom .right-column {
+    width: 500px;
+    height: 145px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  
+  .header-custom .right-column .title {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 0;
+    text-align: right;
+    font-style: bold;
+    font-weight: 400;
+  }
+  
