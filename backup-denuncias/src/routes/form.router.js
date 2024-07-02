@@ -2,6 +2,7 @@ import { Router } from "express";
 import pool from '../config/database.js';
 const router = Router()
 
+
 // ENDPOINTS
 // Ruta POST para crear un nuevo usuario
 router.post('/form', async (req, res) => {
@@ -157,5 +158,6 @@ router.delete('/form/:id', async (req, res) => {
       res.status(500).json({ message: 'Error del servidor' });
     }
   });
+
 
   export default router;
