@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import M from 'materialize-css';
 import Formulario from '../../Formulario';
 import FormVictim from '../Forms/FormVictim';
+import FormHechos from '../Forms/FormHechos';
+
 
 const Collapsible = () => {
 
@@ -28,7 +30,7 @@ const Collapsible = () => {
                         <div className={`collapsible-body ${activeCollapsible === 0 ? 'active' : ''}`}><FormVictim /></div>
                     </li>
                     <li>
-                        <div className="collapsible-header #0d47a1 blue darken-4 white-text" onClick={() => handleCollapsibleClick(1)}><i className="material-icons">gavel</i>ANTECEDENTES DEL/A DENUNCIANTE</div>
+                        <div className="collapsible-header #f57c00 orange darken-2 white-text" onClick={() => handleCollapsibleClick(1)}><i className="material-icons">gavel</i>ANTECEDENTES DEL/A DENUNCIANTE</div>
                         <div className={`collapsible-body ${activeCollapsible === 1 ? 'active' : ''}`}><span><FormVictim /></span></div>
                     </li>
                     <li>
@@ -36,8 +38,8 @@ const Collapsible = () => {
                         <div className={`collapsible-body ${activeCollapsible === 2 ? 'active' : ''}`}><span><FormVictim /></span></div>
                     </li>
                     <li>
-                        <div className="collapsible-header" onClick={() => handleCollapsibleClick(3)}><i className="material-icons">content_paste</i>HECHOS QUE SE DENUNCIAN</div>
-                        <div className={`collapsible-body ${activeCollapsible === 3 ? 'active' : ''}`}><span><FormVictim /></span></div>
+                        <div className="collapsible-header #f57c00 orange darken-2 white-text" onClick={() => handleCollapsibleClick(3)}><i className="material-icons">content_paste</i>HECHOS QUE SE DENUNCIAN</div>
+                        <div className={`collapsible-body ${activeCollapsible === 3 ? 'active' : ''}`}><span><FormHechos /></span></div>
                     </li>
                 </ul>
             </div>    

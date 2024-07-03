@@ -56,9 +56,11 @@ const FormInitial = () => {
 
   return (
             <div className="container">
-                <h1>Fecha</h1>
-                <p>{currentDate}</p>
-                <br />
+
+                <div>
+                    <h6 className="right-align">Fecha : {currentDate}</h6>
+                </div>
+                
                 <form onSubmit={handleSubmit}>
                 
                     <div className="row">
@@ -125,7 +127,7 @@ const FormInitial = () => {
                             <span className="helper-text" data-error="Ingrese un RUT válido"></span>
                         </div>
 
-                        <button className="btn waves-effect waves-light" type="submit">
+                        <button className="btn waves-effect waves-light #0d47a1 blue darken-4 white-text" type="submit">
                         Enviar
                         <i className="material-icons right">send</i>
                         </button>

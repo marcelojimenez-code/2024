@@ -284,7 +284,7 @@ const FormVictim = () => {
             </div>
             <div className="row">
               <div className="input-field col s12 right">
-                <button className="btn waves-effect waves-light" type="submit" name="action">
+                <button className="btn waves-effect waves-light #0d47a1 blue darken-4 white-text" type="submit" name="action">
                   Enviar
                   <i className="material-icons right">send</i>
                 </button>
