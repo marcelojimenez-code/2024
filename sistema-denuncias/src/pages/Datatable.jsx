@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {fetchVictimas} from '../api/Victimas'
+import {fetchVictimas} from '../Components/api/Victimas'
 import Swal from 'sweetalert2';
 import './Datatable.css'
 

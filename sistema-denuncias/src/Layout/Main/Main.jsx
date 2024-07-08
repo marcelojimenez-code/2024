@@ -1,13 +1,16 @@
 import React from 'react';
-import DataTable from '../../Components/Datatable/Datatable';
-import MenuLeft from '../../Components/MenuLeft/MenuLeft';
-import DatatableGestor from '../../Components/Datatable/DatatableGestor';
-import DatatableCJS from '../../Components/Datatable/DatatableCJS';
-import './Main.css'
+import { Outlet } from "react-router-dom"
+import DataTable from '../../pages/Datatable';
+import DatatableGestor from '../../pages/DatatableGestor';
+import DatatableCJS from '../../pages/DatatableCJS';
+import Navbar from '../../Components/Navbar/Navbar';
 
 
 const Main = () => {
   return (
+    <>
+    <Navbar />
+
     <div className="espaciado">
       <div className="row">
         <DataTable />
@@ -15,6 +18,7 @@ const Main = () => {
         <DatatableCJS />
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,18 +1,19 @@
 import Header from './Layout/Header/Header'
-import Main from './Layout/Main/Main'
 import Footer from './Layout/Footer/Footer'
-import Navbar from './Layout/Navbar/Navbar'
+//import Layout from './Layout/Layout'
+
+import './App.css'
+import Main from './Layout/Main/Main'
+
 
 function App() {
 
 
   return (
     <>
-    <Header title="SISTEMA DE DENUNCIAS" />
-    <Navbar />
-    <Main />
-    <Footer />
-
+      <Header title="SISTEMA DE DENUNCIAS" />
+      <Main />
+      <Footer />
     </>
   )
 }

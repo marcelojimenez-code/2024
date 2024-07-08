@@ -26,11 +26,11 @@ const Collapsible = () => {
             <div className="row">
                 <ul className="collapsible">
                     <li>
-                        <div className="collapsible-header #f57c00 orange darken-2 white-text" onClick={() => handleCollapsibleClick(0)}><i className="material-icons">account_circle</i>ANTECEDENTES DE LA VÍCTIMA</div>
+                        <div className="collapsible-header #f57c00 orange darken-2 white-text" onClick={() => handleCollapsibleClick(0)}><i className="material-icons">account_circle</i>ANTECEDENTES DEL DENUNCIADO</div>
                         <div className={`collapsible-body ${activeCollapsible === 0 ? 'active' : ''}`}><FormVictim /></div>
                     </li>
                     <li>
-                        <div className="collapsible-header #f57c00 orange darken-2 white-text" onClick={() => handleCollapsibleClick(1)}><i className="material-icons">gavel</i>ANTECEDENTES DEL/A DENUNCIANTE</div>
+                        <div className="collapsible-header #f57c00 orange darken-2 white-text" onClick={() => handleCollapsibleClick(1)}><i className="material-icons">gavel</i>ANTECEDENTES DE LA VÍCTIMA</div>
                         <div className={`collapsible-body ${activeCollapsible === 1 ? 'active' : ''}`}><span><FormVictim /></span></div>
                     </li>
                     <li>

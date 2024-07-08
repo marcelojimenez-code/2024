@@ -4,6 +4,7 @@ import bodyParser from 'body-parser'
 import sequelize from './config/db.config.js'
 import viewsUsuario from './routes/usuarios.router.js'
 import viewsRouter from './routes/victima.router.js'
+import viewsDelitos from './routes/delitos.router.js'
 import cors from 'cors'
 
 dotenv.config()
@@ -33,7 +34,8 @@ app.listen(port, async () => {
  * RUTAS DEL SISTEMA
  */
 app.use('/', viewsRouter)
-app.use('/usuarios', viewsUsuario)
+app.use('/api/usuarios', viewsUsuario)
+app.use('/api/delitos', viewsDelitos)
 
 
 // Manejo de errores global

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {fetchVictimas} from '../api/Victimas'
+import {fetchVictimas} from '../Components/api/Victimas'
+import {fetchDelitos} from '../Components/api/Delitos'
 import Swal from 'sweetalert2';
 import './Datatable.css'
 
 const DatatableGestor = () => {
   const [victimas, setVictimas] = useState([]);
+  const [delitos, setDelitos] = useState([]);
   const [selectedVictimas, setSelectedVictimas] = useState([]);
 
   useEffect(() => {
@@ -20,10 +22,21 @@ const DatatableGestor = () => {
         }));
         setVictimas(victimasWithCheck); 
     }
-    getVictimas(); // Llamar a la función al cargar el componente
 
 
+    const getDelitos = async () => {
+      try {
+        const data = await fetchDelitos();
+        setDelitos(data);
+      } catch (error) {
+        console.error('Error al obtener los delitos:', error);
+      }
+    };
+
+    getVictimas(); 
+    getDelitos();
   }, []);
+
 
   // Función para manejar el cambio en el select de "Delito"
   const handleDelitoChange = (id, value) => {
@@ -98,10 +111,7 @@ const DatatableGestor = () => {
                 <th>Apellido Paterno</th>
                 <th>Apellido Materno</th>
                 <th>Teléfono</th>
-                <th>Correo</th>
                 <th>Dirección</th>
-                <th>Comuna</th>
-                <th>Región</th>
                 <th>Delito</th> 
                 <th>Ruc</th>
                 <th>SI / NO</th>
@@ -118,22 +128,23 @@ const DatatableGestor = () => {
                   <td>{victima.apellido_paterno}</td>
                   <td>{victima.apellido_materno}</td>
                   <td>{victima.telefono}</td>
-                  <td>{victima.correo}</td>
                   <td>{victima.direccion}</td>
-                  <td>{victima.comuna}</td>
-                  <td>{victima.region}</td>
-                  <td>
-                      <select
+                  <td><select
                         value={victima.delito}
-                        className="input-field"
+                        className="browser-default"
                         onChange={(e) => handleDelitoChange(victima.id, e.target.value)}
                       >
-                        <option value="" disabled>Seleccionar</option>
-                        <option value="delito1">Delito 1</option>
-                        <option value="delito2">Delito 2</option>
-                        <option value="delito3">Delito 3</option>
-                      </select>
+                        <option value="" disabled>
+                          Seleccione un delito
+                        </option>
 
+
+                        {delitos.length > 0 && delitos.map((delito) => (
+                            <option key={delito.cod_delito} value={delito.cod_delito}>
+                              {delito.delito}
+                            </option>
+                        ))}
+                      </select>
                   </td>
 
                   <td>
