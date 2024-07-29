@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import {fetchTipoDocumento} from '../api/tipoDocumento.js'
 
 const FormInitial = () => {
 
   const [currentDate, setCurrentDate] = useState('');
+  const [selectedTipoDocumento, setSelectedTipoDocumento] = useState([]);
 
   const [formData, setFormData] = useState({
+    esExtranjero: '',
     esVictima :'',
     tipoDocumento :'',
     rut :''
@@ -16,6 +19,18 @@ const FormInitial = () => {
     if (storedFormData) {
       setFormData(JSON.parse(storedFormData));
     }
+
+
+    const getTipoDocumento = async () => {
+      try {
+        const data = await fetchTipoDocumento();
+        setSelectedTipoDocumento(data);
+      } catch (error) {
+        console.error('Error al obtener los tipo de documentos :', error);
+      }
+    };
+
+    getTipoDocumento()
   }, []);
 
   useEffect(() => {
@@ -34,7 +49,7 @@ const FormInitial = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if ( formData.rut === '' || formData.esVictima === '') {
+    if ( formData.rut === '' || formData.esVictima === '' || formData.esExtranjero === '') {
         M.toast({ html: 'Por favor completa todos los campos obligatorios.', classes: 'rounded' });
         return;
     }
@@ -47,6 +62,7 @@ const FormInitial = () => {
 
     // Limpiar el formulario después de guardar los datos
     setFormData({
+        esExtranjero: '',
         esVictima :'',
         tipoDocumento :'',
         rut :''
@@ -55,12 +71,12 @@ const FormInitial = () => {
   };
 
   return (
-            <div className="container">
-
+    <>
                 <div>
                     <h6 className="right-align">Fecha : {currentDate}</h6>
                 </div>
                 
+                <div className='left-align'>
                 <form onSubmit={handleSubmit}>
                 
                     <div className="row">
@@ -92,22 +108,54 @@ const FormInitial = () => {
                             </p>
                         </div>
                     </div>
+
+                    <div className="row">
+                        <div className="col s12">
+                            <p>¿Es usted extranjero?</p>
+                            <p>
+                            <label>
+                                <input
+                                name="esExtranjero"
+                                type="radio"
+                                value="SI"
+                                onChange={ handleChange }
+                                checked={formData.esExtranjero === 'SI'}
+                                />
+                                <span>SI</span>
+                            </label>
+                            </p>
+                            <p>
+                            <label>
+                                <input
+                                name="esExtranjero"
+                                type="radio"
+                                value="NO"
+                                onChange={ handleChange }
+                                checked={formData.esExtranjero === 'NO'}
+                                />
+                                <span>NO</span>
+                            </label>
+                            </p>
+                        </div>
+                    </div>
                     
                     <div className="row">
                         <div className="col s6">
                             <select
-                            name='tipoDocumento'
-                            id='tipoDocumento'
-                            className="input-field browser-default"
-                            value={formData.tipoDocumento}
-                            onChange={handleChange}
+                              value={formData.tipoDocumento}
+                              className="browser-default"
+                              onChange={(e) => handleDelitoChange(formData.tipoDocumento, e.target.value)}
                             >
-                            <option value="0" disabled>Tipo de Documento</option>
-                            <option value="1">CEDULA DE IDENTIDAD</option>
-                            <option value="2">PASAPORTE</option>
-                            <option value="3">LICENCIA DE CONDUCIR</option>
-                            <option value="4">CARNE ELECTORAL</option>
-                            <option value="5">CEDULA DE IDENTIDAD EXTRANJERA</option>
+                              <option value="" disabled>
+                                Seleccione un delito
+                              </option>
+
+
+                              {selectedTipoDocumento.length > 0 && selectedTipoDocumento.map((tipoDocumento) => (
+                                  <option key={tipoDocumento.id} value={tipoDocumento.id}>
+                                    {tipoDocumento.gls_documento}
+                                  </option>
+                              ))}
                             </select>
                             
                         </div>
@@ -133,7 +181,9 @@ const FormInitial = () => {
                         </button>
                     </div>    
                 </form>
-            </div>
+                </div>
+    </>            
+
   );
 };
 

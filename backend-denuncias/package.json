@@ -4,8 +4,10 @@
   "main": "src/app.js",
   "type": "module",
   "scripts": {
-    "dev": "node .",
-    "start": "node . --watch"
+    "dev": "node --watch .",
+    "start": "node .",
+    "db:importar":"node ./src/seed/seed.js -i",
+    "db:eliminar":"node ./src/seed/seed.js -e"
   },
   "keywords": [],
   "author": "",

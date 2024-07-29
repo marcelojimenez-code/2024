@@ -2,9 +2,14 @@ import express from 'express'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import sequelize from './config/db.config.js'
+
 import viewsUsuario from './routes/usuarios.router.js'
 import viewsRouter from './routes/victima.router.js'
 import viewsDelitos from './routes/delitos.router.js'
+import viewsTipoDocumento from './routes/tipoDocumento.router.js'
+import viewsRegion from './routes/region.router.js'
+import viewsComunas from './routes/comunas.router.js'
+
 import cors from 'cors'
 
 dotenv.config()
@@ -33,13 +38,17 @@ app.listen(port, async () => {
 /**
  * RUTAS DEL SISTEMA
  */
-app.use('/', viewsRouter)
+// app.use('/', viewsRouter)
 app.use('/api/usuarios', viewsUsuario)
 app.use('/api/delitos', viewsDelitos)
+app.use('/api/tipoDocumento', viewsTipoDocumento)
+app.use('/api/regiones', viewsRegion)
+app.use('/api/comunas', viewsComunas);
+
 
 
 // Manejo de errores global
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ message: 'Error del servidor' });
-  });
+});

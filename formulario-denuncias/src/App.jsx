@@ -9,11 +9,11 @@ function App() {
 
   return (
     <>
-    <Header />
-    <Information />
-    <FormInitial />
-    <Collapsible />
-    
+      <Header />
+      <Information />
+
+
+      <WizardForm />
     </>
   )
 }

@@ -1,5 +1,6 @@
 import  { DataTypes } from "sequelize";
 import sequelize from "../config/db.config.js";
+import Region from "./region.model.js";
 
 
 const Delitos = sequelize.define('delitos', {
@@ -18,7 +19,7 @@ const Delitos = sequelize.define('delitos', {
     vigencia: {
         type: DataTypes.INTEGER,
         defaultValue: 1
-    },
+    },  
 
 },{
     schema:'formulario_denuncias',

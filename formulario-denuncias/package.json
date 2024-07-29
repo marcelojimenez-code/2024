@@ -13,8 +13,10 @@
     "axios": "^1.7.2",
     "material-icons": "^1.13.12",
     "materialize-css": "^1.0.0-rc.2",
+    "multer": "^1.4.5-lts.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-form-wizard-component": "^0.2.3",
     "react-router-dom": "^6.24.0",
     "sweetalert2": "^11.6.13"
   },
